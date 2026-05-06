@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;1,600&family=Barlow:wght@300;400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-bebas: 'Bebas Neue', cursive;
+  --font-barlow: 'Barlow', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #0A0A0A;
+  color: #F0F0F0;
+  font-family: 'Barlow', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Speed lines animation */
+@keyframes rush {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(100px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fill-bar {
+  from { width: 0; }
+}
+
+.speed-lines::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -20%; width: 140%; height: 100%;
+  background: repeating-linear-gradient(
+    -15deg,
+    transparent 0px, transparent 48px,
+    rgba(200,255,0,0.02) 48px, rgba(200,255,0,0.02) 50px
+  );
+  animation: rush 8s linear infinite;
+}
+
+.clip-corner {
+  clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+}
+
+.photo-card-hover img {
+  transition: transform 0.4s ease;
+}
+.photo-card-hover:hover img {
+  transform: scale(1.06);
+}
+.photo-card-hover .overlay {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.photo-card-hover:hover .overlay {
+  opacity: 1;
+}
+
+/* Reach bars */
+.reach-bar-fill {
+  animation: fill-bar 1.5s ease-out forwards;
+}
+
+/* Glitch */
+.glitch { position: relative; }
+.glitch::before, .glitch::after {
+  content: attr(data-text);
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+}
+.glitch::before {
+  color: #00FFD1;
+  animation: glitch1 4s infinite;
+  clip-path: polygon(0 30%, 100% 30%, 100% 55%, 0 55%);
+}
+.glitch::after {
+  color: #FF2D78;
+  animation: glitch2 4s infinite;
+  clip-path: polygon(0 60%, 100% 60%, 100% 80%, 0 80%);
+}
+@keyframes glitch1 {
+  0%, 90%, 100% { transform: none; opacity: 0; }
+  92% { transform: translateX(-4px); opacity: 0.8; }
+  94% { transform: translateX(4px); opacity: 0.8; }
+  96% { transform: none; opacity: 0; }
+}
+@keyframes glitch2 {
+  0%, 88%, 100% { transform: none; opacity: 0; }
+  90% { transform: translateX(4px); opacity: 0.8; }
+  92% { transform: translateX(-4px); opacity: 0.8; }
+  94% { transform: none; opacity: 0; }
+}
