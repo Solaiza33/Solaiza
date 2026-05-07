@@ -80,3 +80,36 @@ body {
 .photo-card-hover:hover .overlay { opacity: 1; }
 
 .divider { width:100%; height:1px; background:linear-gradient(90deg,transparent,rgba(0,255,209,0.15),transparent); }
+
+/* ── Mobile ─────────────────────────────────── */
+@media (max-width: 768px) {
+  section { padding-left: 1.25rem !important; padding-right: 1.25rem !important; }
+
+  .btn-sec { margin-left: 0 !important; margin-top: 0.75rem; }
+
+  /* page.tsx */
+  .stats-bar   { grid-template-columns: repeat(2,1fr) !important; }
+  .about-grid  { grid-template-columns: 1fr !important; gap: 2rem !important; }
+  .cta-grid    { grid-template-columns: 1fr !important; gap: 2rem !important; }
+  .cta-photos  { display: none !important; }
+  .carrera-row { grid-template-columns: 40px 1fr auto !important; gap: 0.75rem !important; }
+  .carrera-tiempo { display: none !important; }
+  .contact-row { flex-direction: column !important; gap: 1.5rem !important; align-items: center !important; }
+  .site-footer { flex-direction: column !important; gap: 0.5rem !important; text-align: center !important; padding: 1.5rem 1.25rem !important; }
+
+  /* patrocinadores */
+  .mega-stats-grid { grid-template-columns: repeat(2,1fr) !important; }
+  .athlete-grid    { grid-template-columns: 1fr !important; text-align: center !important; }
+  .achiev-grid     { grid-template-columns: 1fr !important; }
+  .offers-grid     { grid-template-columns: 1fr !important; }
+  .reach-grid      { grid-template-columns: 1fr !important; gap: 2rem !important; }
+  .cta-nums        { flex-wrap: wrap !important; gap: 1.5rem 2rem !important; }
+  .pat-footer      { flex-direction: column !important; gap: 0.5rem !important; text-align: center !important; padding: 1.5rem 1.25rem !important; }
+
+  /* galeria */
+  .photo-masonry { columns: 2 !important; }
+}
+
+@media (max-width: 480px) {
+  .photo-masonry { columns: 1 !important; }
+}

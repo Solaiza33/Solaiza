@@ -156,7 +156,7 @@ export default function Galeria() {
             </p>
           </div>
         ) : (
-          <div style={{ columns: 3, columnGap: 2 }}>
+          <div className="photo-masonry" style={{ columns: 3, columnGap: 2 }}>
             {fotos.map((foto) => (
               <div
                 key={foto.name}

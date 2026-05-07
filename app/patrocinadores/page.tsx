@@ -62,7 +62,7 @@ export default function Patrocinadores() {
           </p>
 
           {/* Athlete card */}
-          <div style={{maxWidth:740, margin:'0 auto', border:'1px solid rgba(0,255,209,0.15)', background:'#121624', padding:'2.5rem', display:'grid', gridTemplateColumns:'120px 1fr', gap:'2rem', alignItems:'center', position:'relative', overflow:'hidden', textAlign:'left'}}>
+          <div className="athlete-grid" style={{maxWidth:740, margin:'0 auto', border:'1px solid rgba(0,255,209,0.15)', background:'#121624', padding:'2.5rem', display:'grid', gridTemplateColumns:'120px 1fr', gap:'2rem', alignItems:'center', position:'relative', overflow:'hidden', textAlign:'left'}}>
             <div style={{position:'absolute', top:0, left:0, right:0, height:2, background:'linear-gradient(90deg,#00FFD1,#FF2D78,#00FFD1)'}} />
             <div style={{display:'flex', justifyContent:'center'}}>
               <div style={{position:'relative', width:100, height:100}}>
@@ -78,7 +78,7 @@ export default function Patrocinadores() {
           </div>
 
           {/* Mega stats */}
-          <div style={{maxWidth:900, margin:'3rem auto 0', display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:2}}>
+          <div className="mega-stats-grid" style={{maxWidth:900, margin:'3rem auto 0', display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:2}}>
             {[
               {num:'1.45M', label:'Visualizaciones totales', color:'#00FFD1'},
               {num:'39.4K', label:'Seguidores activos', color:'#FF2D78'},
@@ -101,7 +101,7 @@ export default function Patrocinadores() {
         <section style={{position:'relative', zIndex:1, padding:'5rem 3rem'}}>
           <div style={{fontFamily:"'Barlow Condensed',sans-serif", fontSize:'0.75rem', letterSpacing:'0.35em', textTransform:'uppercase', color:'#00FFD1', marginBottom:'0.8rem'}}>Trayectoria deportiva</div>
           <div style={{fontFamily:"'Bebas Neue',sans-serif", fontSize:'3rem', letterSpacing:'0.05em', marginBottom:'3rem'}}>Palmarés y <span style={{color:'#00FFD1'}}>logros</span></div>
-          <div style={{display:'grid', gridTemplateColumns:'repeat(2,1fr)', gap:2}}>
+          <div className="achiev-grid" style={{display:'grid', gridTemplateColumns:'repeat(2,1fr)', gap:2}}>
             {[
               {icon:'🥈', title:'Subcampeón Elite Nacional', sub:'2023 y 2024 · Categoría Elite'},
               {icon:'🏆', title:'Campeón Juvenil y Expertos', sub:'2018 y 2019 · Doble título'},
@@ -125,7 +125,7 @@ export default function Patrocinadores() {
         <section style={{background:'#0D1020', padding:'5rem 3rem', position:'relative', zIndex:1, borderTop:'1px solid rgba(0,255,209,0.15)', borderBottom:'1px solid rgba(0,255,209,0.15)'}}>
           <div style={{fontFamily:"'Barlow Condensed',sans-serif", fontSize:'0.75rem', letterSpacing:'0.35em', textTransform:'uppercase', color:'#00FFD1', marginBottom:'0.8rem'}}>Propuesta de valor</div>
           <div style={{fontFamily:"'Bebas Neue',sans-serif", fontSize:'3rem', letterSpacing:'0.05em', marginBottom:'3rem'}}>Qué <span style={{color:'#00FFD1'}}>ofrezco</span></div>
-          <div style={{display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:2}}>
+          <div className="offers-grid" style={{display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:2}}>
             {[
               {num:'01', icon:'📸', title:'Representación en competencias', desc:'Visibilidad de marca en entrenamientos y competencias nacionales con alcance real en el circuito elite.'},
               {num:'02', icon:'🎥', title:'Contenido de calidad', desc:'Creación de contenido auténtico: videos de carreras, entrenamientos y behind-the-scenes con alta producción visual.'},
@@ -143,7 +143,7 @@ export default function Patrocinadores() {
 
         {/* Alcance + Valores */}
         <section style={{position:'relative', zIndex:1, padding:'5rem 3rem'}}>
-          <div style={{display:'grid', gridTemplateColumns:'1fr 1fr', gap:'5rem'}}>
+          <div className="reach-grid" style={{display:'grid', gridTemplateColumns:'1fr 1fr', gap:'5rem'}}>
             <div>
               <div style={{fontFamily:"'Barlow Condensed',sans-serif", fontSize:'0.75rem', letterSpacing:'0.35em', textTransform:'uppercase', color:'#00FFD1', marginBottom:'0.8rem'}}>Alcance digital</div>
               <div style={{fontFamily:"'Bebas Neue',sans-serif", fontSize:'3rem', letterSpacing:'0.05em', marginBottom:'2rem'}}>Impacto en <span style={{color:'#00FFD1'}}>redes</span></div>
@@ -195,7 +195,7 @@ export default function Patrocinadores() {
             <a href="mailto:francisco.solaiza@email.com" className="btn-main">📩 Contactar a Francisco</a>
             <a href="https://instagram.com/francisco_solaiza" target="_blank" rel="noopener noreferrer" className="btn-sec">↗ Ver perfil</a>
           </div>
-          <div style={{display:'flex', justifyContent:'center', gap:'3rem', marginTop:'3rem', position:'relative', zIndex:1}}>
+          <div className="cta-nums" style={{display:'flex', justifyContent:'center', gap:'3rem', marginTop:'3rem', position:'relative', zIndex:1}}>
             {[
               {net:'Instagram', num:'39.4K'},
               {net:'TikTok views', num:'1.45M'},
@@ -211,7 +211,7 @@ export default function Patrocinadores() {
         </section>
 
         {/* Footer */}
-        <footer style={{position:'relative', zIndex:1, padding:'2rem 3rem', display:'flex', justifyContent:'space-between', alignItems:'center', borderTop:'1px solid rgba(0,255,209,0.15)'}}>
+        <footer className="pat-footer" style={{position:'relative', zIndex:1, padding:'2rem 3rem', display:'flex', justifyContent:'space-between', alignItems:'center', borderTop:'1px solid rgba(0,255,209,0.15)'}}>
           <span style={{fontFamily:"'Bebas Neue',sans-serif", fontSize:'1.1rem', color:'#00FFD1', letterSpacing:'0.15em'}}>FRANCISCO SOLAIZA · #33</span>
           <span style={{fontFamily:"'Barlow Condensed',sans-serif", fontSize:'0.8rem', color:'#6B7A99', letterSpacing:'0.1em', textTransform:'uppercase'}}>Media Kit 2025 · Downhill MTB · México</span>
           <span style={{fontFamily:"'Barlow Condensed',sans-serif", fontSize:'0.8rem', letterSpacing:'0.15em', color:'rgba(0,255,209,0.4)'}}>@francisco_solaiza</span>

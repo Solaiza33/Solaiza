@@ -74,7 +74,7 @@ export default function Home() {
 
       {/* ── STATS ── */}
       <div className="divider" />
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', borderBottom: '1px solid rgba(0,255,209,0.1)' }}>
+      <div className="stats-bar" style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', borderBottom: '1px solid rgba(0,255,209,0.1)' }}>
         {[
           { num: '1.45M', label: 'Visualizaciones' },
           { num: '39.4K', label: 'Seguidores' },
@@ -89,7 +89,7 @@ export default function Home() {
       </div>
 
       {/* ── ACERCA DE MÍ ── */}
-      <section style={{ padding: '5rem 3rem', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '5rem', alignItems: 'center' }}>
+      <section className="about-grid" style={{ padding: '5rem 3rem', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '5rem', alignItems: 'center' }}>
         {/* Text */}
         <div>
           <div style={{ fontFamily: "'Barlow Condensed',sans-serif", fontSize: '0.75rem', letterSpacing: '0.35em', textTransform: 'uppercase', color: '#00FFD1', marginBottom: '0.8rem' }}>El atleta</div>
@@ -153,14 +153,14 @@ export default function Home() {
         </h2>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           {carreras.map((c) => (
-            <div key={c.num} style={{ display: 'grid', gridTemplateColumns: '56px 1fr auto auto', alignItems: 'center', gap: '2rem', padding: '1.4rem 0', borderBottom: '1px solid rgba(255,255,255,0.04)', transition: 'padding-left 0.3s' }}>
+            <div key={c.num} className="carrera-row" style={{ display: 'grid', gridTemplateColumns: '56px 1fr auto auto', alignItems: 'center', gap: '2rem', padding: '1.4rem 0', borderBottom: '1px solid rgba(255,255,255,0.04)', transition: 'padding-left 0.3s' }}>
               <div style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: '2.2rem', color: 'rgba(0,255,209,0.12)', lineHeight: 1 }}>{c.num}</div>
               <div>
                 <div style={{ fontFamily: "'Barlow Condensed',sans-serif", fontWeight: 600, fontSize: '1.05rem', letterSpacing: '0.06em', textTransform: 'uppercase' }}>{c.nombre}</div>
                 <div style={{ fontSize: '0.82rem', color: '#6B7A99', marginTop: 2 }}>📍 {c.lugar} · {c.fecha}</div>
               </div>
               <div style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: '1.8rem', color: c.pos === '1°' ? '#00FFD1' : c.pos === '2°' || c.pos === '3°' ? '#E8F0FF' : '#6B7A99' }}>{c.pos}</div>
-              <div style={{ fontFamily: "'Barlow Condensed',sans-serif", fontSize: '0.95rem', color: '#6B7A99', textAlign: 'right' }}>
+              <div className="carrera-tiempo" style={{ fontFamily: "'Barlow Condensed',sans-serif", fontSize: '0.95rem', color: '#6B7A99', textAlign: 'right' }}>
                 {c.tiempo}<br /><span style={{ fontSize: '0.7rem' }}>tiempo</span>
               </div>
             </div>
@@ -170,7 +170,7 @@ export default function Home() {
 
       {/* ── GALERÍA CTA ── */}
       <div className="divider" />
-      <section style={{ padding: '5rem 3rem', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'center' }}>
+      <section className="cta-grid" style={{ padding: '5rem 3rem', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'center' }}>
         <div>
           <div style={{ fontFamily: "'Barlow Condensed',sans-serif", fontSize: '0.75rem', letterSpacing: '0.35em', textTransform: 'uppercase', color: '#00FFD1', marginBottom: '0.8rem' }}>Fotos en acción</div>
           <h2 style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: '3.5rem', letterSpacing: '0.05em', lineHeight: 1, marginBottom: '1.2rem' }}>
@@ -181,7 +181,7 @@ export default function Home() {
           </p>
           <Link href="/galeria" className="btn-main" style={{ color: '#050810' }}>Ver galería completa</Link>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 2 }}>
+        <div className="cta-photos" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 2 }}>
           {fotos.length > 0
             ? fotos.map((foto, i) => (
                 <div key={foto.name} style={{ position: 'relative', overflow: 'hidden', background: '#121624', aspectRatio: i === 0 ? '2/1' : '1', gridColumn: i === 0 ? 'span 2' : 'span 1' }}>
@@ -212,7 +212,7 @@ export default function Home() {
           <a href="mailto:francisco2000solaiza@gmail.com" className="btn-main" style={{ color: '#050810' }}>📩 Enviar email</a>
           <a href="tel:6461071145" className="btn-sec">📞 Llamar</a>
         </div>
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '3rem', marginTop: '3rem', position: 'relative', zIndex: 1 }}>
+        <div className="contact-row" style={{ display: 'flex', justifyContent: 'center', gap: '3rem', marginTop: '3rem', position: 'relative', zIndex: 1 }}>
           {[
             { label: 'Teléfono', val: '(646) 107 1145' },
             { label: 'Email', val: 'francisco2000solaiza@gmail.com' },
@@ -228,7 +228,7 @@ export default function Home() {
 
       {/* ── FOOTER ── */}
       <div className="divider" />
-      <footer style={{ padding: '2rem 3rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <footer className="site-footer" style={{ padding: '2rem 3rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <span style={{ fontFamily: "'Bebas Neue',sans-serif", letterSpacing: '0.15em', color: '#00FFD1' }}>FRANCISCO SOLAIZA · #33</span>
         <span style={{ fontFamily: "'Barlow Condensed',sans-serif", fontSize: '0.8rem', color: '#6B7A99', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Downhill MTB · Ensenada, México</span>
         <span style={{ fontFamily: "'Barlow Condensed',sans-serif", fontSize: '0.8rem', color: 'rgba(0,255,209,0.4)', letterSpacing: '0.1em' }}>🚵 Sin frenos</span>
