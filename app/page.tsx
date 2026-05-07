@@ -127,7 +127,7 @@ export default function Home() {
               <div className="avatar-ring" />
             </div>
             <div style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: '1.6rem', letterSpacing: '0.1em' }}>Francisco Solaiza</div>
-            <div style={{ fontFamily: "'Barlow Condensed',sans-serif", fontSize: '0.8rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#00FFD1', marginTop: 4 }}>Downhill · Experto · #33</div>
+            <div style={{ fontFamily: "'Barlow Condensed',sans-serif", fontSize: '0.8rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#00FFD1', marginTop: 4 }}>Downhill · Elite · #33</div>
             <div style={{ fontFamily: "'Barlow Condensed',sans-serif", fontSize: '0.75rem', color: '#6B7A99', marginTop: 6 }}>Ensenada, Baja California · México</div>
           </div>
 
