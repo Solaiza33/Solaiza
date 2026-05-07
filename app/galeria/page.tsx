@@ -1,7 +1,6 @@
 'use client'
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
-import Navbar from '@/components/Navbar'
 import { supabase } from '@/lib/supabase'
 
 type Foto = {
@@ -68,8 +67,6 @@ export default function Galeria() {
 
   return (
     <main className="min-h-screen bg-[#0A0A0A]">
-      <Navbar />
-
       {/* Header */}
       <section className="px-8 pt-16 pb-10">
         <p className="font-barlow text-xs tracking-widest uppercase text-[#C8FF00] mb-2">Archivo visual</p>

@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import Navbar from '@/components/Navbar'
 
 const carreras = [
   { num: '01', nombre: 'Copa Guanajuato DH', lugar: 'Sierra de Lobos', fecha: 'May 2025', pos: '2°', tiempo: '3:42.8' },
@@ -11,8 +10,6 @@ const carreras = [
 export default function Home() {
   return (
     <main>
-      <Navbar />
-
       {/* Hero */}
       <section style={{ padding: '5rem 3rem 0' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>

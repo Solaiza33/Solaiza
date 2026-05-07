@@ -1,5 +1,3 @@
-import Navbar from '@/components/Navbar'
-
 export default function Patrocinadores() {
   return (
     <main style={{background:'#050810', color:'#E8F0FF', fontFamily:"'Barlow', sans-serif", overflowX:'hidden', minHeight:'100vh'}}>
@@ -46,7 +44,6 @@ export default function Patrocinadores() {
       `}</style>
 
       <div style={{position:'relative', zIndex:1}}>
-        <Navbar />
 
         {/* HERO */}
         <section style={{padding:'5rem 3rem 3rem', textAlign:'center'}}>
