@@ -20,10 +20,9 @@ body {
   overflow-x: hidden;
 }
 
-/* Speed lines animation */
 @keyframes rush {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(100px); }
+  0% { transform: translateX(-50%) skewX(-15deg); }
+  100% { transform: translateX(calc(-50% + 100px)) skewX(-15deg); }
 }
 
 @keyframes pulse-glow {
@@ -39,16 +38,22 @@ body {
   from { width: 0; }
 }
 
+/* Speed lines — full viewport width regardless of content container */
 .speed-lines::before {
   content: '';
-  position: absolute;
-  top: 0; left: -20%; width: 140%; height: 100%;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  width: 100vw;
+  height: 100%;
+  pointer-events: none;
   background: repeating-linear-gradient(
     -15deg,
     transparent 0px, transparent 48px,
     rgba(200,255,0,0.02) 48px, rgba(200,255,0,0.02) 50px
   );
   animation: rush 8s linear infinite;
+  z-index: 0;
 }
 
 .clip-corner {
@@ -69,12 +74,10 @@ body {
   opacity: 1;
 }
 
-/* Reach bars */
 .reach-bar-fill {
   animation: fill-bar 1.5s ease-out forwards;
 }
 
-/* Glitch */
 .glitch { position: relative; }
 .glitch::before, .glitch::after {
   content: attr(data-text);
