@@ -77,7 +77,7 @@ export default function Home() {
       <div className="stats-bar" style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', borderBottom: '1px solid rgba(0,255,209,0.1)' }}>
         {[
           { num: '1.45M', label: 'Visualizaciones' },
-          { num: '39.4K', label: 'Seguidores' },
+          { num: '42.3K', label: 'Seguidores' },
           { num: '6+',    label: 'Títulos nacionales' },
           { num: '94',    label: 'km/h top speed' },
         ].map(({ num, label }, i) => (

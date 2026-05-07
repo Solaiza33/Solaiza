@@ -81,7 +81,7 @@ export default function Patrocinadores() {
           <div className="mega-stats-grid" style={{maxWidth:900, margin:'3rem auto 0', display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:2}}>
             {[
               {num:'1.45M', label:'Visualizaciones totales', color:'#00FFD1'},
-              {num:'39.4K', label:'Seguidores activos', color:'#FF2D78'},
+              {num:'42.3K', label:'Seguidores activos', color:'#FF2D78'},
               {num:'36,663', label:'Interacciones totales', color:'#C8FF00'},
               {num:'310', label:'Publicaciones', color:'#00FFD1'},
               {num:'1,293', label:'Siguiendo (nicho)', color:'#FF2D78'},
@@ -149,7 +149,7 @@ export default function Patrocinadores() {
               <div style={{fontFamily:"'Bebas Neue',sans-serif", fontSize:'3rem', letterSpacing:'0.05em', marginBottom:'2rem'}}>Impacto en <span style={{color:'#00FFD1'}}>redes</span></div>
               {[
                 {label:'TikTok · Videos', val:'1.45M views', w:'92%'},
-                {label:'Instagram · Seguidores', val:'39.4K', w:'70%'},
+                {label:'Instagram · Seguidores', val:'42.3K', w:'70%'},
                 {label:'Engagement rate', val:'2.5%', w:'55%'},
                 {label:'Interacciones totales', val:'36,663', w:'65%'},
               ].map(({label, val, w}) => (
@@ -197,7 +197,7 @@ export default function Patrocinadores() {
           </div>
           <div className="cta-nums" style={{display:'flex', justifyContent:'center', gap:'3rem', marginTop:'3rem', position:'relative', zIndex:1}}>
             {[
-              {net:'Instagram', num:'39.4K'},
+              {net:'Instagram', num:'42.3K'},
               {net:'TikTok views', num:'1.45M'},
               {net:'Títulos', num:'6+'},
               {net:'Años elite', num:'7+'},
