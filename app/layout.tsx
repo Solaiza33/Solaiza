@@ -18,7 +18,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
-      <body>{children}</body>
+      <body>
+        <div style={{
+          maxWidth: '1400px',
+          margin: '0 auto',
+          minHeight: '100vh',
+          boxShadow: '0 0 80px rgba(0,0,0,0.8)',
+        }}>
+          {children}
+        </div>
+      </body>
     </html>
   )
 }
