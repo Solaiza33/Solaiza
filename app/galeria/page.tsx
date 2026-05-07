@@ -65,15 +65,25 @@ export default function Galeria() {
     if (!files || files.length === 0) return
     setUploading(true)
     let subidas = 0
+    let lastError = ''
     for (const file of Array.from(files)) {
       if (!file.type.startsWith('image/')) continue
       const nombre = `${Date.now()}_${file.name.replace(/\s/g, '_')}`
       const { error } = await supabase.storage.from('fotos').upload(`carreras/${nombre}`, file)
-      if (!error) subidas++
+      if (!error) {
+        subidas++
+      } else {
+        lastError = error.message
+        console.error('Supabase upload error:', error)
+      }
     }
     await cargarFotos()
     setUploading(false)
-    mostrarToast(`✅ ${subidas} foto${subidas !== 1 ? 's' : ''} subida${subidas !== 1 ? 's' : ''}`)
+    if (subidas > 0) {
+      mostrarToast(`✅ ${subidas} foto${subidas !== 1 ? 's' : ''} subida${subidas !== 1 ? 's' : ''}`)
+    } else {
+      mostrarToast(`❌ Error: ${lastError}`)
+    }
   }
 
   async function eliminarFoto(nombre: string) {
