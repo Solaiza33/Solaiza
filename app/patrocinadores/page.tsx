@@ -1,243 +1,223 @@
 import Navbar from '@/components/Navbar'
 
-const logros = [
-  { icon: '🥈', title: 'Subcampeón Elite Nacional', sub: '2023 y 2024 · Categoría Elite' },
-  { icon: '🏆', title: 'Campeón Juvenil y Expertos', sub: '2018 y 2019 · Doble título' },
-  { icon: '🥇', title: '3× Campeón Elite Estatal', sub: 'Múltiples temporadas · Guanajuato' },
-  { icon: '🚵', title: 'Atleta Profesional Activo', sub: 'Circuito nacional · Ensenada a Irapuato' },
-]
-
-const oferta = [
-  {
-    num: '01', icon: '📸',
-    title: 'Representación en competencias',
-    desc: 'Visibilidad de marca en entrenamientos y competencias nacionales con alcance real en el circuito elite.',
-  },
-  {
-    num: '02', icon: '🎥',
-    title: 'Contenido de calidad',
-    desc: 'Creación de contenido auténtico: videos de carreras, entrenamientos y behind-the-scenes con alta producción.',
-  },
-  {
-    num: '03', icon: '📣',
-    title: 'Promoción auténtica',
-    desc: 'Difusión genuina desde la experiencia real como atleta elite, con credibilidad ante la comunidad ciclista nacional.',
-  },
-]
-
-const stats = [
-  { num: '1.45M', label: 'Visualizaciones totales' },
-  { num: '39.4K', label: 'Seguidores activos' },
-  { num: '36,663', label: 'Interacciones totales' },
-  { num: '310', label: 'Publicaciones' },
-  { num: '1,293', label: 'Siguiendo (nicho)' },
-  { num: '2.5%', label: 'Engagement rate' },
-]
-
-const barras = [
-  { label: 'TikTok · Videos', val: '1.45M views', w: '92%' },
-  { label: 'Instagram · Seguidores', val: '39.4K', w: '70%' },
-  { label: 'Engagement rate', val: '2.5%', w: '55%' },
-  { label: 'Interacciones totales', val: '36,663', w: '65%' },
-]
-
 export default function Patrocinadores() {
   return (
-    <main className="min-h-screen bg-[#050810] text-[#E8F0FF]">
-      {/* Grid background */}
-      <div className="fixed inset-0 pointer-events-none z-0"
-        style={{
-          backgroundImage: 'linear-gradient(rgba(0,255,209,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,255,209,0.03) 1px, transparent 1px)',
-          backgroundSize: '60px 60px',
-        }}
-      />
-      {/* Glows */}
-      <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="absolute w-[600px] h-[600px] rounded-full -top-32 -right-32"
-          style={{ background: 'radial-gradient(circle, rgba(0,255,209,0.06) 0%, transparent 70%)' }} />
-        <div className="absolute w-[500px] h-[500px] rounded-full bottom-48 -left-24"
-          style={{ background: 'radial-gradient(circle, rgba(255,45,120,0.05) 0%, transparent 70%)' }} />
+    <main style={{background:'#050810', color:'#E8F0FF', fontFamily:"'Barlow', sans-serif", overflowX:'hidden', minHeight:'100vh'}}>
+
+      {/* Animated glows */}
+      <div style={{position:'fixed', inset:0, pointerEvents:'none', zIndex:0}}>
+        <div style={{position:'absolute', width:600, height:600, borderRadius:'50%', background:'radial-gradient(circle, rgba(0,255,209,0.06) 0%, transparent 70%)', top:-100, right:-100, animation:'pulse1 6s ease-in-out infinite'}} />
+        <div style={{position:'absolute', width:500, height:500, borderRadius:'50%', background:'radial-gradient(circle, rgba(255,45,120,0.05) 0%, transparent 70%)', bottom:200, left:-100, animation:'pulse2 8s ease-in-out infinite'}} />
       </div>
 
-      <div className="relative z-10">
+      {/* Grid background */}
+      <div style={{position:'fixed', inset:0, zIndex:0, pointerEvents:'none', backgroundImage:'linear-gradient(rgba(0,255,209,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,255,209,0.03) 1px, transparent 1px)', backgroundSize:'60px 60px'}} />
+
+      <style>{`
+        @keyframes pulse1 { 0%,100%{transform:scale(1);opacity:0.6} 50%{transform:scale(1.2);opacity:1} }
+        @keyframes pulse2 { 0%,100%{transform:scale(1.1);opacity:0.4} 50%{transform:scale(0.9);opacity:0.8} }
+        @keyframes spin { to{transform:rotate(360deg)} }
+        @keyframes glitch1 { 0%,90%,100%{transform:none;opacity:0} 92%{transform:translateX(-4px);opacity:0.8} 94%{transform:translateX(4px);opacity:0.8} 96%{transform:none;opacity:0} }
+        @keyframes glitch2 { 0%,88%,100%{transform:none;opacity:0} 90%{transform:translateX(4px);opacity:0.8} 92%{transform:translateX(-4px);opacity:0.8} 94%{transform:none;opacity:0} }
+        @keyframes fillBar { from{width:0} to{width:var(--w)} }
+        .glitch{position:relative;}
+        .glitch::before,.glitch::after{content:attr(data-text);position:absolute;top:0;left:0;width:100%;height:100%;}
+        .glitch::before{color:#00FFD1;animation:glitch1 4s infinite;clip-path:polygon(0 30%,100% 30%,100% 55%,0 55%);}
+        .glitch::after{color:#FF2D78;animation:glitch2 4s infinite;clip-path:polygon(0 60%,100% 60%,100% 80%,0 80%);}
+        .mega-stat{background:#121624;padding:2rem 1.5rem;text-align:center;border:1px solid rgba(0,255,209,0.15);position:relative;overflow:hidden;transition:border-color 0.3s;}
+        .mega-stat:hover{border-color:#00FFD1;}
+        .mega-stat::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#00FFD1,transparent);transform:scaleX(0);transition:transform 0.4s;}
+        .mega-stat:hover::after{transform:scaleX(1);}
+        .ach-item{background:#121624;border:1px solid rgba(0,255,209,0.15);padding:1.5rem 2rem;display:flex;align-items:center;gap:1.5rem;transition:all 0.3s;}
+        .ach-item:hover{border-color:rgba(0,255,209,0.4);transform:translateX(4px);}
+        .offer-card{background:#121624;border:1px solid rgba(0,255,209,0.15);padding:2rem 1.5rem;position:relative;transition:all 0.3s;overflow:hidden;}
+        .offer-card:hover{border-color:rgba(255,45,120,0.4);}
+        .offer-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:2px;background:#FF2D78;transform:scaleX(0);transition:transform 0.3s;transform-origin:left;}
+        .offer-card:hover::before{transform:scaleX(1);}
+        .value-pill{font-family:'Barlow Condensed',sans-serif;font-size:0.85rem;letter-spacing:0.15em;text-transform:uppercase;padding:0.6rem 1.4rem;border:1px solid rgba(0,255,209,0.15);color:#6B7A99;transition:all 0.3s;cursor:default;}
+        .value-pill:hover{border-color:#00FFD1;color:#00FFD1;background:rgba(0,255,209,0.05);}
+        .value-pill.hl{border-color:rgba(0,255,209,0.5);color:#00FFD1;}
+        .btn-main{display:inline-flex;align-items:center;gap:0.8rem;background:#00FFD1;color:#050810;padding:1rem 3rem;font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:0.15em;border:none;cursor:pointer;transition:all 0.3s;clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,14px 100%,0 calc(100% - 14px));text-decoration:none;}
+        .btn-main:hover{background:#fff;transform:translateY(-3px);}
+        .btn-sec{display:inline-flex;align-items:center;gap:0.8rem;background:transparent;color:#00FFD1;padding:1rem 3rem;font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:0.15em;border:1px solid rgba(0,255,209,0.4);cursor:pointer;transition:all 0.3s;margin-left:1rem;text-decoration:none;}
+        .btn-sec:hover{background:rgba(0,255,209,0.08);}
+        .reach-fill{height:100%;background:linear-gradient(90deg,#00FFD1,#FF2D78);animation:fillBar 1.5s ease-out forwards;}
+        .avatar-ring{position:absolute;inset:-6px;border-radius:50%;border:1px dashed rgba(0,255,209,0.3);animation:spin 12s linear infinite;}
+      `}</style>
+
+      <div style={{position:'relative', zIndex:1}}>
         <Navbar />
 
-        {/* Hero */}
-        <section className="px-8 py-20 text-center">
-          <div className="flex items-center justify-center gap-4 mb-4">
-            <div className="flex-1 max-w-20 h-px bg-[#00FFD1]/40" />
-            <span className="font-barlow text-xs tracking-widest uppercase text-[#00FFD1]">
-              Atleta Elite · Downhill MTB
-            </span>
-            <div className="flex-1 max-w-20 h-px bg-[#00FFD1]/40" />
+        {/* HERO */}
+        <section style={{padding:'5rem 3rem 3rem', textAlign:'center'}}>
+          <div style={{display:'flex', alignItems:'center', justifyContent:'center', gap:'1rem', marginBottom:'1rem'}}>
+            <div style={{flex:1, maxWidth:80, height:1, background:'rgba(0,255,209,0.4)'}} />
+            <span style={{fontFamily:"'Barlow Condensed',sans-serif", fontSize:'0.85rem', letterSpacing:'0.4em', textTransform:'uppercase', color:'#00FFD1'}}>Atleta Elite · Downhill MTB</span>
+            <div style={{flex:1, maxWidth:80, height:1, background:'rgba(0,255,209,0.4)'}} />
           </div>
 
-          <h1 className="font-bebas leading-none mb-2" style={{ fontSize: 'clamp(4rem,10vw,9rem)' }}>
-            <span className="text-[#00FFD1] glitch" data-text="Francisco">Francisco</span><br />
-            <span className="text-[#FF2D78]">Solaiza</span>
+          <h1 style={{fontFamily:"'Bebas Neue',sans-serif", fontSize:'clamp(3.5rem,10vw,8rem)', letterSpacing:'0.05em', lineHeight:0.9, marginBottom:'0.5rem'}}>
+            <span className="glitch" data-text="FRANCISCO" style={{color:'#00FFD1', display:'block'}}>FRANCISCO</span>
+            <span style={{color:'#FF2D78'}}>SOLAIZA</span>
           </h1>
-          <p className="font-barlow text-sm text-gray-500 tracking-widest uppercase mb-12">
+          <p style={{fontFamily:"'Barlow Condensed',sans-serif", fontSize:'1rem', color:'#6B7A99', letterSpacing:'0.15em', textTransform:'uppercase', marginBottom:'3.5rem'}}>
             Ciclismo competitivo de alto rendimiento · Nivel nacional
           </p>
 
           {/* Athlete card */}
-          <div className="max-w-2xl mx-auto border border-[#00FFD1]/15 bg-[#121624] p-8 grid grid-cols-[100px_1fr] gap-6 items-center text-left relative">
-            <div className="absolute top-0 left-0 right-0 h-0.5"
-              style={{ background: 'linear-gradient(90deg, #00FFD1, #FF2D78, #00FFD1)' }} />
-            <div className="w-24 h-24 rounded-full border-2 border-[#00FFD1] bg-gradient-to-br from-[#1a2a3a] to-[#0a1a2a] flex items-center justify-center font-bebas text-3xl text-[#00FFD1]"
-              style={{ boxShadow: '0 0 30px rgba(0,255,209,0.2)' }}>
-              FS
+          <div style={{maxWidth:740, margin:'0 auto', border:'1px solid rgba(0,255,209,0.15)', background:'#121624', padding:'2.5rem', display:'grid', gridTemplateColumns:'120px 1fr', gap:'2rem', alignItems:'center', position:'relative', overflow:'hidden', textAlign:'left'}}>
+            <div style={{position:'absolute', top:0, left:0, right:0, height:2, background:'linear-gradient(90deg,#00FFD1,#FF2D78,#00FFD1)'}} />
+            <div style={{display:'flex', justifyContent:'center'}}>
+              <div style={{position:'relative', width:100, height:100}}>
+                <div style={{width:100, height:100, borderRadius:'50%', border:'3px solid #00FFD1', background:'linear-gradient(135deg,#1a2a3a,#0a1a2a)', display:'flex', alignItems:'center', justifyContent:'center', fontFamily:"'Bebas Neue',sans-serif", fontSize:'2.5rem', color:'#00FFD1', boxShadow:'0 0 30px rgba(0,255,209,0.2)'}}>FS</div>
+                <div className="avatar-ring" />
+              </div>
             </div>
             <div>
-              <h2 className="font-bebas text-3xl tracking-wide mb-1">Francisco Solaiza</h2>
-              <p className="font-barlow text-sm text-[#00FFD1] tracking-widest mb-2">@francisco_solaiza</p>
-              <p className="text-sm text-gray-400 leading-relaxed">
-                Deportista de alto rendimiento especializado en downhill MTB. Representación elite nacional
-                con presencia en competencias de Ensenada a Irapuato.
-              </p>
+              <h2 style={{fontFamily:"'Bebas Neue',sans-serif", fontSize:'2.2rem', letterSpacing:'0.05em', marginBottom:'0.2rem'}}>Francisco Solaiza</h2>
+              <div style={{fontFamily:"'Barlow Condensed',sans-serif", fontSize:'0.9rem', color:'#00FFD1', letterSpacing:'0.15em', marginBottom:'0.8rem'}}>@francisco_solaiza</div>
+              <div style={{fontSize:'0.9rem', color:'#6B7A99', lineHeight:1.6}}>Deportista de alto rendimiento especializado en downhill MTB. Representación elite nacional con presencia en competencias de Ensenada a Irapuato. Campeón múltiple con proyección internacional.</div>
             </div>
           </div>
 
-          {/* Stats */}
-          <div className="max-w-3xl mx-auto mt-0.5 grid grid-cols-3">
-            {stats.map(({ num, label }, i) => (
-              <div key={label}
-                className="bg-[#121624] border border-[#00FFD1]/10 py-6 px-4 text-center hover:border-[#00FFD1]/30 transition-colors">
-                <div className={`font-bebas text-4xl mb-1 ${i % 3 === 0 ? 'text-[#00FFD1]' : i % 3 === 1 ? 'text-[#FF2D78]' : 'text-[#C8FF00]'}`}>
-                  {num}
-                </div>
-                <div className="font-barlow text-xs tracking-widest uppercase text-gray-500">{label}</div>
+          {/* Mega stats */}
+          <div style={{maxWidth:900, margin:'3rem auto 0', display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:2}}>
+            {[
+              {num:'1.45M', label:'Visualizaciones totales', color:'#00FFD1'},
+              {num:'39.4K', label:'Seguidores activos', color:'#FF2D78'},
+              {num:'36,663', label:'Interacciones totales', color:'#C8FF00'},
+              {num:'310', label:'Publicaciones', color:'#00FFD1'},
+              {num:'1,293', label:'Siguiendo (nicho)', color:'#FF2D78'},
+              {num:'2.5%', label:'Engagement rate', color:'#C8FF00'},
+            ].map(({num, label, color}) => (
+              <div key={label} className="mega-stat">
+                <div style={{fontFamily:"'Bebas Neue',sans-serif", fontSize:'3rem', color, lineHeight:1, marginBottom:'0.3rem'}}>{num}</div>
+                <div style={{fontFamily:"'Barlow Condensed',sans-serif", fontSize:'0.75rem', letterSpacing:'0.2em', textTransform:'uppercase', color:'#6B7A99'}}>{label}</div>
               </div>
             ))}
           </div>
         </section>
+
+        <div style={{height:1, background:'linear-gradient(90deg,transparent,rgba(0,255,209,0.15),transparent)'}} />
 
         {/* Logros */}
-        <section className="px-8 py-16">
-          <p className="font-barlow text-xs tracking-widest uppercase text-[#00FFD1] mb-2">Trayectoria deportiva</p>
-          <h2 className="font-bebas text-5xl tracking-wide mb-10">Palmarés y <span className="text-[#00FFD1]">logros</span></h2>
-          <div className="grid grid-cols-2 gap-0.5">
-            {logros.map(({ icon, title, sub }) => (
-              <div key={title}
-                className="bg-[#121624] border border-[#00FFD1]/10 p-6 flex items-center gap-5 hover:border-[#00FFD1]/30 hover:translate-x-1 transition-all">
-                <div className="w-14 h-14 flex items-center justify-center text-2xl bg-[#00FFD1]/07 border border-[#00FFD1]/15 flex-shrink-0">
-                  {icon}
-                </div>
+        <section style={{position:'relative', zIndex:1, padding:'5rem 3rem'}}>
+          <div style={{fontFamily:"'Barlow Condensed',sans-serif", fontSize:'0.75rem', letterSpacing:'0.35em', textTransform:'uppercase', color:'#00FFD1', marginBottom:'0.8rem'}}>Trayectoria deportiva</div>
+          <div style={{fontFamily:"'Bebas Neue',sans-serif", fontSize:'3rem', letterSpacing:'0.05em', marginBottom:'3rem'}}>Palmarés y <span style={{color:'#00FFD1'}}>logros</span></div>
+          <div style={{display:'grid', gridTemplateColumns:'repeat(2,1fr)', gap:2}}>
+            {[
+              {icon:'🥈', title:'Subcampeón Elite Nacional', sub:'2023 y 2024 · Categoría Elite'},
+              {icon:'🏆', title:'Campeón Juvenil y Expertos', sub:'2018 y 2019 · Doble título'},
+              {icon:'🥇', title:'3× Campeón Elite Estatal', sub:'Múltiples temporadas · Guanajuato'},
+              {icon:'🚵', title:'Atleta Profesional Activo', sub:'Circuito nacional · Ensenada a Irapuato'},
+            ].map(({icon, title, sub}) => (
+              <div key={title} className="ach-item">
+                <div style={{fontSize:'2rem', flexShrink:0, width:56, height:56, display:'flex', alignItems:'center', justifyContent:'center', background:'rgba(0,255,209,0.07)', border:'1px solid rgba(0,255,209,0.15)'}}>{icon}</div>
                 <div>
-                  <div className="font-barlow font-semibold tracking-wide uppercase text-sm mb-1">{title}</div>
-                  <div className="text-sm text-gray-500">{sub}</div>
+                  <div style={{fontFamily:"'Barlow Condensed',sans-serif", fontSize:'1rem', fontWeight:600, letterSpacing:'0.08em', textTransform:'uppercase', marginBottom:'0.2rem'}}>{title}</div>
+                  <div style={{fontSize:'0.85rem', color:'#6B7A99'}}>{sub}</div>
                 </div>
               </div>
             ))}
           </div>
         </section>
+
+        <div style={{height:1, background:'linear-gradient(90deg,transparent,rgba(0,255,209,0.15),transparent)'}} />
 
         {/* Oferta */}
-        <section className="px-8 py-16 bg-[#0D1020] border-y border-[#00FFD1]/10">
-          <p className="font-barlow text-xs tracking-widest uppercase text-[#00FFD1] mb-2">Propuesta de valor</p>
-          <h2 className="font-bebas text-5xl tracking-wide mb-10">Qué <span className="text-[#00FFD1]">ofrezco</span></h2>
-          <div className="grid grid-cols-3 gap-0.5">
-            {oferta.map(({ num, icon, title, desc }) => (
-              <div key={num}
-                className="bg-[#121624] border border-[#00FFD1]/10 p-6 relative hover:border-[#FF2D78]/40 transition-colors group">
-                <div className="absolute top-4 right-5 font-bebas text-6xl text-[#FF2D78]/10 leading-none">{num}</div>
-                <div className="text-3xl mb-4">{icon}</div>
-                <div className="font-barlow font-bold tracking-widest uppercase text-sm mb-3">{title}</div>
-                <div className="text-sm text-gray-500 leading-relaxed">{desc}</div>
-                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#FF2D78] scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
+        <section style={{background:'#0D1020', padding:'5rem 3rem', position:'relative', zIndex:1, borderTop:'1px solid rgba(0,255,209,0.15)', borderBottom:'1px solid rgba(0,255,209,0.15)'}}>
+          <div style={{fontFamily:"'Barlow Condensed',sans-serif", fontSize:'0.75rem', letterSpacing:'0.35em', textTransform:'uppercase', color:'#00FFD1', marginBottom:'0.8rem'}}>Propuesta de valor</div>
+          <div style={{fontFamily:"'Bebas Neue',sans-serif", fontSize:'3rem', letterSpacing:'0.05em', marginBottom:'3rem'}}>Qué <span style={{color:'#00FFD1'}}>ofrezco</span></div>
+          <div style={{display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:2}}>
+            {[
+              {num:'01', icon:'📸', title:'Representación en competencias', desc:'Visibilidad de marca en entrenamientos y competencias nacionales con alcance real en el circuito elite.'},
+              {num:'02', icon:'🎥', title:'Contenido de calidad', desc:'Creación de contenido auténtico: videos de carreras, entrenamientos y behind-the-scenes con alta producción visual.'},
+              {num:'03', icon:'📣', title:'Promoción auténtica', desc:'Difusión genuina desde la experiencia real como atleta elite, con credibilidad ante la comunidad ciclista nacional.'},
+            ].map(({num, icon, title, desc}) => (
+              <div key={num} className="offer-card">
+                <div style={{fontFamily:"'Bebas Neue',sans-serif", fontSize:'4rem', color:'rgba(255,45,120,0.1)', lineHeight:1, position:'absolute', top:'1rem', right:'1.5rem'}}>{num}</div>
+                <div style={{fontSize:'1.8rem', marginBottom:'1rem'}}>{icon}</div>
+                <div style={{fontFamily:"'Barlow Condensed',sans-serif", fontSize:'1.1rem', fontWeight:700, letterSpacing:'0.1em', textTransform:'uppercase', marginBottom:'0.8rem'}}>{title}</div>
+                <div style={{fontSize:'0.88rem', color:'#6B7A99', lineHeight:1.6}}>{desc}</div>
               </div>
             ))}
           </div>
         </section>
 
-        {/* Alcance */}
-        <section className="px-8 py-16">
-          <div className="grid grid-cols-2 gap-20">
+        {/* Alcance + Valores */}
+        <section style={{position:'relative', zIndex:1, padding:'5rem 3rem'}}>
+          <div style={{display:'grid', gridTemplateColumns:'1fr 1fr', gap:'5rem'}}>
             <div>
-              <p className="font-barlow text-xs tracking-widest uppercase text-[#00FFD1] mb-2">Alcance digital</p>
-              <h2 className="font-bebas text-5xl tracking-wide mb-8">Impacto en <span className="text-[#00FFD1]">redes</span></h2>
-              <div className="space-y-6">
-                {barras.map(({ label, val, w }) => (
-                  <div key={label}>
-                    <div className="flex justify-between mb-2">
-                      <span className="font-barlow text-sm uppercase tracking-widest text-gray-300">{label}</span>
-                      <span className="font-bebas text-base text-[#00FFD1]">{val}</span>
-                    </div>
-                    <div className="h-1.5 bg-white/5 overflow-hidden">
-                      <div className="h-full reach-bar-fill"
-                        style={{
-                          width: w,
-                          background: 'linear-gradient(90deg, #00FFD1, #FF2D78)',
-                        }} />
-                    </div>
+              <div style={{fontFamily:"'Barlow Condensed',sans-serif", fontSize:'0.75rem', letterSpacing:'0.35em', textTransform:'uppercase', color:'#00FFD1', marginBottom:'0.8rem'}}>Alcance digital</div>
+              <div style={{fontFamily:"'Bebas Neue',sans-serif", fontSize:'3rem', letterSpacing:'0.05em', marginBottom:'2rem'}}>Impacto en <span style={{color:'#00FFD1'}}>redes</span></div>
+              {[
+                {label:'TikTok · Videos', val:'1.45M views', w:'92%'},
+                {label:'Instagram · Seguidores', val:'39.4K', w:'70%'},
+                {label:'Engagement rate', val:'2.5%', w:'55%'},
+                {label:'Interacciones totales', val:'36,663', w:'65%'},
+              ].map(({label, val, w}) => (
+                <div key={label} style={{marginBottom:'1.5rem'}}>
+                  <div style={{display:'flex', justifyContent:'space-between', marginBottom:'0.5rem'}}>
+                    <span style={{fontFamily:"'Barlow Condensed',sans-serif", fontSize:'0.9rem', letterSpacing:'0.1em', textTransform:'uppercase'}}>{label}</span>
+                    <span style={{fontFamily:"'Bebas Neue',sans-serif", fontSize:'1rem', color:'#00FFD1'}}>{val}</span>
                   </div>
-                ))}
-              </div>
+                  <div style={{height:6, background:'rgba(255,255,255,0.06)', overflow:'hidden'}}>
+                    <div className="reach-fill" style={{'--w':w} as React.CSSProperties} />
+                  </div>
+                </div>
+              ))}
             </div>
-
             <div>
-              <p className="font-barlow text-xs tracking-widest uppercase text-[#00FFD1] mb-2">Perfil del atleta</p>
-              <h2 className="font-bebas text-5xl tracking-wide mb-6">Valores de <span className="text-[#00FFD1]">marca</span></h2>
-              <p className="text-gray-400 text-sm leading-relaxed mb-6">
-                Busco colaboración con marcas que compartan el compromiso por el{' '}
-                <strong className="text-white">rendimiento</strong>, la{' '}
-                <strong className="text-white">innovación</strong> y el{' '}
-                <strong className="text-white">profesionalismo</strong> en el deporte de alto nivel.
+              <div style={{fontFamily:"'Barlow Condensed',sans-serif", fontSize:'0.75rem', letterSpacing:'0.35em', textTransform:'uppercase', color:'#00FFD1', marginBottom:'0.8rem'}}>Perfil del atleta</div>
+              <div style={{fontFamily:"'Bebas Neue',sans-serif", fontSize:'3rem', letterSpacing:'0.05em', marginBottom:'1.5rem'}}>Valores de <span style={{color:'#00FFD1'}}>marca</span></div>
+              <p style={{fontSize:'0.95rem', color:'#6B7A99', lineHeight:1.7, marginBottom:'2rem'}}>
+                Busco colaboración con marcas que compartan el compromiso por el <strong style={{color:'#E8F0FF'}}>rendimiento</strong>, la <strong style={{color:'#E8F0FF'}}>innovación</strong> y el <strong style={{color:'#E8F0FF'}}>profesionalismo</strong> en el deporte de alto nivel.
               </p>
-              <div className="flex flex-wrap gap-2">
-                {['Alto rendimiento', 'Innovación', 'Profesionalismo', 'Autenticidad', 'Competencia elite', 'Comunidad MTB', 'Contenido viral', 'Nicho ciclismo MX'].map(v => (
-                  <span key={v}
-                    className="font-barlow text-xs tracking-widest uppercase px-4 py-2 border border-[#00FFD1]/20 text-[#00FFD1]/70 hover:border-[#00FFD1] hover:text-[#00FFD1] transition-colors cursor-default">
-                    {v}
-                  </span>
+              <div style={{display:'flex', gap:2, flexWrap:'wrap'}}>
+                {['Alto rendimiento','Innovación','Profesionalismo','Autenticidad','Competencia elite','Comunidad MTB','Contenido viral','Nicho ciclismo MX'].map((v, i) => (
+                  <span key={v} className={`value-pill${i < 3 ? ' hl' : ''}`}>{v}</span>
                 ))}
               </div>
             </div>
           </div>
         </section>
 
+        <div style={{height:1, background:'linear-gradient(90deg,transparent,rgba(0,255,209,0.15),transparent)'}} />
+
         {/* CTA */}
-        <section className="px-8 py-24 text-center relative overflow-hidden border-t border-[#00FFD1]/10">
-          <div className="absolute inset-0"
-            style={{ background: 'radial-gradient(ellipse 70% 50% at 50% 50%, rgba(0,255,209,0.05) 0%, transparent 70%)' }} />
-          <p className="relative z-10 font-barlow text-xs tracking-widest uppercase text-gray-500 mb-4">¿Listo para colaborar?</p>
-          <h2 className="relative z-10 font-bebas leading-none mb-4" style={{ fontSize: 'clamp(3rem,7vw,6rem)' }}>
-            Sé parte del<br /><span className="text-[#00FFD1]">podium</span>
+        <section style={{position:'relative', zIndex:1, padding:'6rem 3rem', textAlign:'center', borderTop:'1px solid rgba(0,255,209,0.15)'}}>
+          <div style={{position:'absolute', inset:0, background:'radial-gradient(ellipse 70% 50% at 50% 50%, rgba(0,255,209,0.05) 0%, transparent 70%)'}} />
+          <div style={{fontFamily:"'Barlow Condensed',sans-serif", fontSize:'0.75rem', letterSpacing:'0.35em', textTransform:'uppercase', color:'#6B7A99', marginBottom:'1rem', position:'relative', zIndex:1}}>¿Listo para colaborar?</div>
+          <h2 style={{fontFamily:"'Bebas Neue',sans-serif", fontSize:'clamp(3rem,7vw,6rem)', letterSpacing:'0.05em', marginBottom:'1rem', position:'relative', zIndex:1}}>
+            Sé parte del<br /><span style={{color:'#00FFD1'}}>podium</span>
           </h2>
-          <p className="relative z-10 font-barlow text-gray-500 tracking-widest uppercase text-sm mb-10">
+          <p style={{fontFamily:"'Barlow Condensed',sans-serif", fontSize:'1rem', letterSpacing:'0.2em', textTransform:'uppercase', color:'#6B7A99', marginBottom:'2.5rem', position:'relative', zIndex:1}}>
             A cambio busco apoyo en equipamiento y respaldo para continuar creciendo
           </p>
-          <div className="relative z-10 flex gap-4 justify-center">
-            <a href="mailto:francisco.solaiza@email.com"
-              className="clip-corner bg-[#00FFD1] text-black px-12 py-4 font-bebas text-lg tracking-widest hover:bg-white transition-all inline-block">
-              Contactar a Francisco
-            </a>
-            <a href="https://instagram.com/francisco_solaiza" target="_blank" rel="noopener noreferrer"
-              className="clip-corner border border-[#00FFD1]/40 text-[#00FFD1] px-12 py-4 font-bebas text-lg tracking-widest hover:bg-[#00FFD1]/10 transition-all inline-block">
-              Ver perfil ↗
-            </a>
+          <div style={{position:'relative', zIndex:1}}>
+            <a href="mailto:francisco.solaiza@email.com" className="btn-main">📩 Contactar a Francisco</a>
+            <a href="https://instagram.com/francisco_solaiza" target="_blank" rel="noopener noreferrer" className="btn-sec">↗ Ver perfil</a>
           </div>
-
-          <div className="relative z-10 flex justify-center gap-12 mt-12">
+          <div style={{display:'flex', justifyContent:'center', gap:'3rem', marginTop:'3rem', position:'relative', zIndex:1}}>
             {[
-              { net: 'Instagram', num: '39.4K' },
-              { net: 'TikTok views', num: '1.45M' },
-              { net: 'Títulos', num: '6+' },
-              { net: 'Años elite', num: '7+' },
-            ].map(({ net, num }) => (
-              <div key={net} className="text-center">
-                <div className="font-barlow text-xs tracking-widest uppercase text-gray-500 mb-1">{net}</div>
-                <div className="font-bebas text-2xl text-[#00FFD1]">{num}</div>
+              {net:'Instagram', num:'39.4K'},
+              {net:'TikTok views', num:'1.45M'},
+              {net:'Títulos', num:'6+'},
+              {net:'Años elite', num:'7+'},
+            ].map(({net, num}) => (
+              <div key={net} style={{textAlign:'center'}}>
+                <div style={{fontFamily:"'Barlow Condensed',sans-serif", fontSize:'0.75rem', letterSpacing:'0.2em', textTransform:'uppercase', color:'#6B7A99', marginBottom:'0.3rem'}}>{net}</div>
+                <div style={{fontFamily:"'Bebas Neue',sans-serif", fontSize:'1.8rem', color:'#00FFD1'}}>{num}</div>
               </div>
             ))}
           </div>
         </section>
 
         {/* Footer */}
-        <footer className="px-8 py-6 border-t border-white/5 flex justify-between items-center">
-          <span className="font-bebas tracking-widest text-[#00FFD1]">FRANCISCO SOLAIZA · #33</span>
-          <span className="font-barlow text-xs text-gray-600 uppercase tracking-widest">Media Kit 2025 · Downhill MTB · México</span>
-          <span className="font-barlow text-xs tracking-widest" style={{ color: 'rgba(0,255,209,0.4)' }}>@francisco_solaiza</span>
+        <footer style={{position:'relative', zIndex:1, padding:'2rem 3rem', display:'flex', justifyContent:'space-between', alignItems:'center', borderTop:'1px solid rgba(0,255,209,0.15)'}}>
+          <span style={{fontFamily:"'Bebas Neue',sans-serif", fontSize:'1.1rem', color:'#00FFD1', letterSpacing:'0.15em'}}>FRANCISCO SOLAIZA · #33</span>
+          <span style={{fontFamily:"'Barlow Condensed',sans-serif", fontSize:'0.8rem', color:'#6B7A99', letterSpacing:'0.1em', textTransform:'uppercase'}}>Media Kit 2025 · Downhill MTB · México</span>
+          <span style={{fontFamily:"'Barlow Condensed',sans-serif", fontSize:'0.8rem', letterSpacing:'0.15em', color:'rgba(0,255,209,0.4)'}}>@francisco_solaiza</span>
         </footer>
       </div>
     </main>

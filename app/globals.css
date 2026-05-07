@@ -5,103 +5,78 @@
 @tailwind utilities;
 
 :root {
-  --font-bebas: 'Bebas Neue', cursive;
-  --font-barlow: 'Barlow', sans-serif;
+  --teal: #00FFD1;
+  --acid: #C8FF00;
+  --pink: #FF2D78;
+  --dark: #050810;
+  --mid: #0D1020;
+  --card: #121624;
+  --border: rgba(0,255,209,0.15);
+  --text: #E8F0FF;
+  --muted: #6B7A99;
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
-  background: #0A0A0A;
-  color: #F0F0F0;
+  background: #050810;
+  color: #E8F0FF;
   font-family: 'Barlow', sans-serif;
   overflow-x: hidden;
 }
 
-@keyframes rush {
-  0% { transform: translateX(-50%) skewX(-15deg); }
-  100% { transform: translateX(calc(-50% + 100px)) skewX(-15deg); }
-}
-
-@keyframes pulse-glow {
-  0%, 100% { opacity: 0.6; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.15); }
-}
-
-@keyframes spin-slow {
-  to { transform: rotate(360deg); }
-}
-
-@keyframes fill-bar {
-  from { width: 0; }
-}
-
-/* Speed lines — full viewport width regardless of content container */
-.speed-lines::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 50%;
-  width: 100vw;
-  height: 100%;
-  pointer-events: none;
-  background: repeating-linear-gradient(
-    -15deg,
-    transparent 0px, transparent 48px,
-    rgba(200,255,0,0.02) 48px, rgba(200,255,0,0.02) 50px
-  );
-  animation: rush 8s linear infinite;
-  z-index: 0;
-}
-
-.clip-corner {
-  clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
-}
-
-.photo-card-hover img {
-  transition: transform 0.4s ease;
-}
-.photo-card-hover:hover img {
-  transform: scale(1.06);
-}
-.photo-card-hover .overlay {
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-.photo-card-hover:hover .overlay {
-  opacity: 1;
-}
-
-.reach-bar-fill {
-  animation: fill-bar 1.5s ease-out forwards;
-}
+@keyframes pulse1 { 0%,100%{transform:scale(1);opacity:0.6} 50%{transform:scale(1.2);opacity:1} }
+@keyframes pulse2 { 0%,100%{transform:scale(1.1);opacity:0.4} 50%{transform:scale(0.9);opacity:0.8} }
+@keyframes spin { to{transform:rotate(360deg)} }
+@keyframes fillBar { from{width:0} to{width:var(--w)} }
+@keyframes glitch1 { 0%,90%,100%{transform:none;opacity:0} 92%{transform:translateX(-4px);opacity:0.8} 94%{transform:translateX(4px);opacity:0.8} 96%{transform:none;opacity:0} }
+@keyframes glitch2 { 0%,88%,100%{transform:none;opacity:0} 90%{transform:translateX(4px);opacity:0.8} 92%{transform:translateX(-4px);opacity:0.8} 94%{transform:none;opacity:0} }
 
 .glitch { position: relative; }
 .glitch::before, .glitch::after {
   content: attr(data-text);
   position: absolute; top: 0; left: 0; width: 100%; height: 100%;
 }
-.glitch::before {
-  color: #00FFD1;
-  animation: glitch1 4s infinite;
-  clip-path: polygon(0 30%, 100% 30%, 100% 55%, 0 55%);
+.glitch::before { color: #00FFD1; animation: glitch1 4s infinite; clip-path: polygon(0 30%,100% 30%,100% 55%,0 55%); }
+.glitch::after  { color: #FF2D78; animation: glitch2 4s infinite; clip-path: polygon(0 60%,100% 60%,100% 80%,0 80%); }
+
+.clip-corner {
+  clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
 }
-.glitch::after {
-  color: #FF2D78;
-  animation: glitch2 4s infinite;
-  clip-path: polygon(0 60%, 100% 60%, 100% 80%, 0 80%);
+
+.avatar-ring {
+  position: absolute; inset: -6px; border-radius: 50%;
+  border: 1px dashed rgba(0,255,209,0.3);
+  animation: spin 12s linear infinite;
 }
-@keyframes glitch1 {
-  0%, 90%, 100% { transform: none; opacity: 0; }
-  92% { transform: translateX(-4px); opacity: 0.8; }
-  94% { transform: translateX(4px); opacity: 0.8; }
-  96% { transform: none; opacity: 0; }
-}
-@keyframes glitch2 {
-  0%, 88%, 100% { transform: none; opacity: 0; }
-  90% { transform: translateX(4px); opacity: 0.8; }
-  92% { transform: translateX(-4px); opacity: 0.8; }
-  94% { transform: none; opacity: 0; }
-}
+
+.mega-stat { background: #121624; padding: 2rem 1.5rem; text-align: center; border: 1px solid rgba(0,255,209,0.15); position: relative; overflow: hidden; transition: border-color 0.3s; }
+.mega-stat:hover { border-color: #00FFD1; }
+.mega-stat::after { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background:linear-gradient(90deg,transparent,#00FFD1,transparent); transform:scaleX(0); transition:transform 0.4s; }
+.mega-stat:hover::after { transform: scaleX(1); }
+
+.ach-item { background:#121624; border:1px solid rgba(0,255,209,0.15); padding:1.5rem 2rem; display:flex; align-items:center; gap:1.5rem; transition:all 0.3s; }
+.ach-item:hover { border-color:rgba(0,255,209,0.4); transform:translateX(4px); }
+
+.offer-card { background:#121624; border:1px solid rgba(0,255,209,0.15); padding:2rem 1.5rem; position:relative; transition:all 0.3s; overflow:hidden; }
+.offer-card:hover { border-color:rgba(255,45,120,0.4); }
+.offer-card::before { content:''; position:absolute; top:0; left:0; width:100%; height:2px; background:#FF2D78; transform:scaleX(0); transition:transform 0.3s; transform-origin:left; }
+.offer-card:hover::before { transform:scaleX(1); }
+
+.value-pill { font-family:'Barlow Condensed',sans-serif; font-size:0.85rem; letter-spacing:0.15em; text-transform:uppercase; padding:0.6rem 1.4rem; border:1px solid rgba(0,255,209,0.15); color:#6B7A99; transition:all 0.3s; cursor:default; }
+.value-pill:hover { border-color:#00FFD1; color:#00FFD1; background:rgba(0,255,209,0.05); }
+.value-pill.hl { border-color:rgba(0,255,209,0.5); color:#00FFD1; }
+
+.reach-fill { height:100%; background:linear-gradient(90deg,#00FFD1,#FF2D78); animation:fillBar 1.5s ease-out forwards; }
+
+.btn-main { display:inline-flex; align-items:center; gap:0.8rem; background:#00FFD1; color:#050810; padding:1rem 3rem; font-family:'Bebas Neue',sans-serif; font-size:1.1rem; letter-spacing:0.15em; border:none; cursor:pointer; transition:all 0.3s; clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,14px 100%,0 calc(100% - 14px)); text-decoration:none; }
+.btn-main:hover { background:#fff; transform:translateY(-3px); }
+.btn-sec { display:inline-flex; align-items:center; gap:0.8rem; background:transparent; color:#00FFD1; padding:1rem 3rem; font-family:'Bebas Neue',sans-serif; font-size:1.1rem; letter-spacing:0.15em; border:1px solid rgba(0,255,209,0.4); cursor:pointer; transition:all 0.3s; margin-left:1rem; text-decoration:none; }
+.btn-sec:hover { background:rgba(0,255,209,0.08); }
+
+.photo-card-hover img { transition: transform 0.4s ease; }
+.photo-card-hover:hover img { transform: scale(1.06); }
+.photo-card-hover .overlay { opacity: 0; transition: opacity 0.3s ease; }
+.photo-card-hover:hover .overlay { opacity: 1; }
+
+.divider { width:100%; height:1px; background:linear-gradient(90deg,transparent,rgba(0,255,209,0.15),transparent); }

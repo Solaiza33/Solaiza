@@ -10,91 +10,67 @@ const carreras = [
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#0A0A0A]">
+    <main>
+      <Navbar />
+
       {/* Hero */}
-      <div className="relative overflow-hidden">
-        {/* Radial glows */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute w-[600px] h-[600px] rounded-full -top-32 -right-32"
-            style={{ background: 'radial-gradient(circle, rgba(200,255,0,0.06) 0%, transparent 70%)' }} />
-          <div className="absolute w-[400px] h-[400px] rounded-full bottom-0 left-0"
-            style={{ background: 'radial-gradient(circle, rgba(200,255,0,0.03) 0%, transparent 70%)' }} />
+      <section style={{ padding: '5rem 3rem 0' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
+          <div style={{ width: 40, height: 2, background: '#C8FF00' }} />
+          <span style={{ fontFamily: "'Barlow Condensed',sans-serif", fontSize: '0.85rem', letterSpacing: '0.4em', textTransform: 'uppercase', color: '#C8FF00' }}>
+            Downhill · Velocidad extrema
+          </span>
         </div>
-        {/* Speed lines */}
-        <div className="absolute inset-0 speed-lines pointer-events-none" />
 
-        <Navbar />
+        <h1 className="glitch" data-text="Sin" style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: 'clamp(5rem,12vw,10rem)', lineHeight: 0.9, marginBottom: '0.3rem', display: 'block' }}>
+          Sin
+        </h1>
+        <h1 className="glitch" data-text="frenos" style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: 'clamp(5rem,12vw,10rem)', lineHeight: 0.9, marginBottom: '1.5rem', color: '#C8FF00', display: 'block' }}>
+          frenos
+        </h1>
 
-        {/* Hero body */}
-        <div className="relative z-10 px-8 pt-20 pb-0">
-          <div className="flex items-center gap-4 mb-6">
-            <div className="w-10 h-0.5 bg-[#C8FF00]" />
-            <span className="font-barlow text-sm tracking-widest uppercase text-[#C8FF00]">
-              Downhill · Velocidad extrema
-            </span>
+        <p style={{ fontFamily: "'Barlow',sans-serif", fontSize: '1.1rem', color: '#6B7A99', maxWidth: 480, lineHeight: 1.7, marginBottom: '2.5rem' }}>
+          Galería de carreras de descenso. Montañas, ciudad y asfalto a toda velocidad. Sube, comparte y revive cada bajada.
+        </p>
+
+        <div style={{ display: 'flex', gap: '1rem', paddingBottom: '5rem' }}>
+          <Link href="/galeria" className="btn-main" style={{ color: '#050810' }}>Ver galería</Link>
+          <Link href="/patrocinadores" className="btn-sec">Patrocinadores</Link>
+        </div>
+      </section>
+
+      {/* Stats bar */}
+      <div style={{ borderTop: '1px solid rgba(0,255,209,0.1)', display: 'grid', gridTemplateColumns: 'repeat(4,1fr)' }}>
+        {[
+          { num: '1.45M', label: 'Visualizaciones' },
+          { num: '39.4K', label: 'Seguidores' },
+          { num: '6+', label: 'Títulos nacionales' },
+          { num: '94 km/h', label: 'Top speed' },
+        ].map(({ num, label }) => (
+          <div key={label} style={{ padding: '1.5rem 3rem', borderRight: '1px solid rgba(255,255,255,0.05)' }}>
+            <div style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: '2.5rem', color: '#C8FF00' }}>{num}</div>
+            <div style={{ fontFamily: "'Barlow Condensed',sans-serif", fontSize: '0.75rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#6B7A99', marginTop: 4 }}>{label}</div>
           </div>
-
-          <h1 className="font-bebas leading-none mb-6" style={{ fontSize: 'clamp(5rem,12vw,10rem)' }}>
-            Sin<br />
-            <span className="text-[#C8FF00] glitch" data-text="frenos">frenos</span>
-          </h1>
-
-          <p className="font-barlow text-lg text-gray-400 max-w-lg leading-relaxed mb-10">
-            Galería de carreras de descenso. Montañas, ciudad y asfalto a toda velocidad.
-            Sube, comparte y revive cada bajada.
-          </p>
-
-          <div className="flex gap-4 pb-20">
-            <Link href="/galeria"
-              className="clip-corner bg-[#C8FF00] text-black px-10 py-4 font-barlow font-bold text-base tracking-widest uppercase hover:bg-white transition-all hover:-translate-y-0.5">
-              Ver galería
-            </Link>
-            <Link href="/patrocinadores"
-              className="clip-corner border border-[#C8FF00]/40 text-[#C8FF00] px-10 py-4 font-barlow font-bold text-base tracking-widest uppercase hover:bg-[#C8FF00]/10 transition-all">
-              Patrocinadores
-            </Link>
-          </div>
-        </div>
-
-        {/* Stats bar */}
-        <div className="relative z-10 grid grid-cols-4 border-t border-[#C8FF00]/10">
-          {[
-            { num: '1.45M', label: 'Visualizaciones' },
-            { num: '39.4K', label: 'Seguidores' },
-            { num: '6+', label: 'Títulos nacionales' },
-            { num: '94 km/h', label: 'Top speed' },
-          ].map(({ num, label }) => (
-            <div key={label} className="py-6 px-8 border-r border-white/5 last:border-r-0">
-              <div className="font-bebas text-4xl text-[#C8FF00]">{num}</div>
-              <div className="font-barlow text-xs tracking-widest uppercase text-gray-500 mt-1">{label}</div>
-            </div>
-          ))}
-        </div>
+        ))}
       </div>
 
       {/* Carreras */}
-      <section className="px-8 py-20 bg-[#141414]">
-        <div className="mb-12">
-          <p className="font-barlow text-xs tracking-widest uppercase text-[#C8FF00] mb-2">Historial</p>
-          <h2 className="font-bebas text-5xl tracking-wide">Mis <span className="text-[#C8FF00]">carreras</span></h2>
+      <section style={{ padding: '5rem 3rem', background: '#0D1020' }}>
+        <div style={{ fontFamily: "'Barlow Condensed',sans-serif", fontSize: '0.75rem', letterSpacing: '0.35em', textTransform: 'uppercase', color: '#00FFD1', marginBottom: '0.8rem' }}>Historial</div>
+        <div style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: '3rem', letterSpacing: '0.05em', marginBottom: '3rem' }}>
+          Mis <span style={{ color: '#00FFD1' }}>carreras</span>
         </div>
-
-        <div className="flex flex-col divide-y divide-white/5">
+        <div style={{ display: 'flex', flexDirection: 'column', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
           {carreras.map((c) => (
-            <div key={c.num}
-              className="grid items-center gap-8 py-6 transition-all hover:pl-2"
-              style={{ gridTemplateColumns: '60px 1fr auto auto' }}>
-              <div className="font-bebas text-4xl text-[#C8FF00]/15">{c.num}</div>
+            <div key={c.num} style={{ display: 'grid', gridTemplateColumns: '60px 1fr auto auto', alignItems: 'center', gap: '2rem', padding: '1.5rem 0', borderBottom: '1px solid rgba(255,255,255,0.04)' }}>
+              <div style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: '2.5rem', color: 'rgba(0,255,209,0.15)', lineHeight: 1 }}>{c.num}</div>
               <div>
-                <div className="font-barlow font-semibold text-lg tracking-wide uppercase">{c.nombre}</div>
-                <div className="text-sm text-gray-500 mt-0.5">📍 {c.lugar} · {c.fecha}</div>
+                <div style={{ fontFamily: "'Barlow Condensed',sans-serif", fontWeight: 600, fontSize: '1.1rem', letterSpacing: '0.05em', textTransform: 'uppercase' }}>{c.nombre}</div>
+                <div style={{ fontSize: '0.85rem', color: '#6B7A99', marginTop: 2 }}>📍 {c.lugar} · {c.fecha}</div>
               </div>
-              <div className={`font-bebas text-3xl ${c.pos === '1°' ? 'text-[#C8FF00]' : c.pos === '2°' || c.pos === '3°' ? 'text-white' : 'text-gray-500'}`}>
-                {c.pos}
-              </div>
-              <div className="font-barlow text-right text-gray-400">
-                {c.tiempo}<br />
-                <span className="text-xs text-gray-600">tiempo</span>
+              <div style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: '1.8rem', color: c.pos === '1°' ? '#C8FF00' : c.pos === '2°' || c.pos === '3°' ? '#E8F0FF' : '#6B7A99' }}>{c.pos}</div>
+              <div style={{ fontFamily: "'Barlow Condensed',sans-serif", fontSize: '1rem', color: '#6B7A99', textAlign: 'right' }}>
+                {c.tiempo}<br /><span style={{ fontSize: '0.75rem' }}>tiempo</span>
               </div>
             </div>
           ))}
@@ -102,27 +78,23 @@ export default function Home() {
       </section>
 
       {/* CTA */}
-      <section className="px-8 py-24 text-center relative overflow-hidden">
-        <div className="absolute inset-0"
-          style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 50%, rgba(200,255,0,0.04) 0%, transparent 70%)' }} />
-        <p className="relative z-10 font-barlow text-xs tracking-widest uppercase text-gray-500 mb-4">¿Quieres patrocinar?</p>
-        <h2 className="relative z-10 font-bebas leading-none mb-4" style={{ fontSize: 'clamp(3rem,7vw,6rem)' }}>
-          Sé parte del<br /><span className="text-[#C8FF00]">podium</span>
+      <section style={{ padding: '6rem 3rem', textAlign: 'center', position: 'relative', borderTop: '1px solid rgba(0,255,209,0.1)' }}>
+        <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 80% 60% at 50% 50%, rgba(0,255,209,0.04) 0%, transparent 70%)' }} />
+        <div style={{ fontFamily: "'Barlow Condensed',sans-serif", fontSize: '0.75rem', letterSpacing: '0.35em', textTransform: 'uppercase', color: '#6B7A99', marginBottom: '1rem', position: 'relative', zIndex: 1 }}>¿Quieres patrocinar?</div>
+        <h2 style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: 'clamp(3rem,7vw,6rem)', lineHeight: 0.95, marginBottom: '1rem', position: 'relative', zIndex: 1 }}>
+          Sé parte del<br /><span style={{ color: '#00FFD1' }}>podium</span>
         </h2>
-        <p className="relative z-10 font-barlow text-gray-500 tracking-widest uppercase text-sm mb-10">
+        <p style={{ fontFamily: "'Barlow Condensed',sans-serif", fontSize: '0.9rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#6B7A99', marginBottom: '2.5rem', position: 'relative', zIndex: 1 }}>
           Marcas que comparten los valores de rendimiento e innovación
         </p>
-        <Link href="/patrocinadores"
-          className="relative z-10 clip-corner bg-[#C8FF00] text-black px-12 py-4 font-bebas text-lg tracking-widest hover:bg-white transition-all inline-block">
-          Ver media kit
-        </Link>
+        <Link href="/patrocinadores" className="btn-main" style={{ position: 'relative', zIndex: 1, color: '#050810' }}>Ver media kit</Link>
       </section>
 
       {/* Footer */}
-      <footer className="px-8 py-6 border-t border-white/5 flex justify-between items-center">
-        <span className="font-bebas tracking-widest text-[#C8FF00]">FRANCISCO SOLAIZA · #33</span>
-        <span className="font-barlow text-xs text-gray-600 uppercase tracking-widest">Downhill MTB · México</span>
-        <span className="font-barlow text-xs tracking-widest" style={{ color: 'rgba(200,255,0,0.4)' }}>🚵 Sin frenos</span>
+      <footer style={{ padding: '2rem 3rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid rgba(0,255,209,0.1)' }}>
+        <span style={{ fontFamily: "'Bebas Neue',sans-serif", letterSpacing: '0.15em', color: '#00FFD1' }}>FRANCISCO SOLAIZA · #33</span>
+        <span style={{ fontFamily: "'Barlow Condensed',sans-serif", fontSize: '0.8rem', color: '#6B7A99', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Downhill MTB · México</span>
+        <span style={{ fontFamily: "'Barlow Condensed',sans-serif", fontSize: '0.8rem', letterSpacing: '0.15em', color: 'rgba(0,255,209,0.4)' }}>🚵 Sin frenos</span>
       </footer>
     </main>
   )
