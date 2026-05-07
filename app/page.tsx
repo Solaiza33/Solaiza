@@ -1,4 +1,8 @@
+'use client'
 import Link from 'next/link'
+import Image from 'next/image'
+import { useEffect, useState } from 'react'
+import { supabase } from '@/lib/supabase'
 
 const carreras = [
   { num: '01', nombre: 'Copa Guanajuato DH', lugar: 'Sierra de Lobos', fecha: 'May 2025', pos: '2°', tiempo: '3:42.8' },
@@ -15,6 +19,24 @@ const logros = [
 ]
 
 export default function Home() {
+  const [fotos, setFotos] = useState<{ url: string; name: string }[]>([])
+
+  useEffect(() => {
+    supabase.storage.from('fotos').list('carreras', { sortBy: { column: 'created_at', order: 'desc' }, limit: 4 })
+      .then(({ data }) => {
+        if (!data) return
+        setFotos(
+          data
+            .filter((f: { name: string }) => f.name !== '.emptyFolderPlaceholder')
+            .slice(0, 4)
+            .map((f: { name: string }) => ({
+              name: f.name,
+              url: supabase.storage.from('fotos').getPublicUrl(`carreras/${f.name}`).data.publicUrl,
+            }))
+        )
+      })
+  }, [])
+
   return (
     <main>
 
@@ -159,13 +181,19 @@ export default function Home() {
           </p>
           <Link href="/galeria" className="btn-main" style={{ color: '#050810' }}>Ver galería completa</Link>
         </div>
-        {/* Decorative grid preview */}
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 2 }}>
-          {['📸','🏔️','🚵','⚡'].map((icon, i) => (
-            <div key={i} style={{ background: '#121624', border: '1px solid rgba(0,255,209,0.1)', aspectRatio: '1', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '2.5rem', opacity: 0.5 }}>
-              {icon}
-            </div>
-          ))}
+          {fotos.length > 0
+            ? fotos.map((foto, i) => (
+                <div key={foto.name} style={{ position: 'relative', overflow: 'hidden', background: '#121624', aspectRatio: i === 0 ? '2/1' : '1', gridColumn: i === 0 ? 'span 2' : 'span 1' }}>
+                  <Image src={foto.url} alt={foto.name} fill style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 400px" />
+                </div>
+              ))
+            : ['📸','🏔️','🚵','⚡'].map((icon, i) => (
+                <div key={i} style={{ background: '#121624', border: '1px solid rgba(0,255,209,0.1)', aspectRatio: '1', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '2.5rem', opacity: 0.5 }}>
+                  {icon}
+                </div>
+              ))
+          }
         </div>
       </section>
 

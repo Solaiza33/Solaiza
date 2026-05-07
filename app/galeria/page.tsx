@@ -156,15 +156,15 @@ export default function Galeria() {
             </p>
           </div>
         ) : (
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 2 }}>
-            {fotos.map((foto, i) => (
+          <div style={{ columns: 3, columnGap: 2 }}>
+            {fotos.map((foto) => (
               <div
                 key={foto.name}
                 className="photo-card-hover"
-                style={{ position: 'relative', overflow: 'hidden', background: '#121624', cursor: 'pointer', aspectRatio: i === 0 ? '2/1' : '4/3', gridColumn: i === 0 ? 'span 2' : 'span 1' }}
+                style={{ breakInside: 'avoid', marginBottom: 2, position: 'relative', overflow: 'hidden', background: '#121624', cursor: 'pointer' }}
                 onClick={() => setModal(foto.url)}
               >
-                <Image src={foto.url} alt={foto.name} fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
+                <Image src={foto.url} alt={foto.name} width={800} height={600} style={{ width: '100%', height: 'auto', display: 'block' }} sizes="33vw" />
                 <div className="overlay" style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%)', display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', padding: '1rem' }}>
                   <span style={{ fontFamily: "'Barlow Condensed',sans-serif", fontSize: '0.75rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#00FFD1' }}>
                     📷 {new Date(foto.created_at).toLocaleDateString('es-MX', { month: 'short', year: 'numeric' })}
